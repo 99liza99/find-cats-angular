@@ -1,2 +1,7 @@
-<app-search (newOptionEvent)="changeFilter($event)"></app-search>
-<app-image *ngFor="let image of images" [image]="image"></app-image>
+<div class="container">
+  <h1>Cats Images</h1>
+  <app-search (newOptionEvent)="changeFilter($event)"></app-search>
+  <div class="gallery">
+    <app-image *ngFor="let image of images" [image]="image"></app-image>
+  </div>
+</div>

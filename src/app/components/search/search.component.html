@@ -1,17 +1,21 @@
 <div class="search" *ngIf="breeds">
-  <h4>Basic mat-select</h4>
-  <mat-form-field>
-    <mat-label>Favorite food</mat-label>
-    <mat-select name="currentBreed" ngDefaultControl [(ngModel)]="currentBreed" (ngModelChange)="onChange()">
-      <mat-option *ngFor="let breed of breeds" [value]="breed.id">
-        {{breed.name}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <h4>Slider</h4>
-  <mat-slider name="limit" ngDefaultControl (input)="onChange()" [(ngModel)]="limit" min="10" max="100" step="10"
-              showTickMarks discrete
-              [displayWith]="formatLabel">
-    <input matSliderThumb>
-  </mat-slider>
+  <div class="breeds">
+    <h3>Select Breed of Cats</h3>
+    <mat-form-field>
+      <mat-label>Favorite food</mat-label>
+      <mat-select name="currentBreed" ngDefaultControl [(ngModel)]="currentBreed" (ngModelChange)="onChange()">
+        <mat-option *ngFor="let breed of breeds" [value]="breed.id">
+          {{breed.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="limit">
+    <h4>Limit Images</h4>
+    <mat-slider name="limit" ngDefaultControl (input)="onChange()" [(ngModel)]="limit" min="10" max="100" step="10"
+                showTickMarks discrete
+                [displayWith]="formatLabel">
+      <input matSliderThumb>
+    </mat-slider>
+  </div>
 </div>

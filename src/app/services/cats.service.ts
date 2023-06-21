@@ -32,7 +32,7 @@ export class CatsService {
   getBreeds(): Observable<BreedInterface[]> {
     let params = {
       page: 0,
-      limit: 10,
+      limit: 20,
       api_key: this.apiKey
     }
 
