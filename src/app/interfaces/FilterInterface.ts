@@ -1,4 +1,4 @@
 export interface FilterInterface {
   limit: number,
-  api_key: string
+  breed_ids: string
 }

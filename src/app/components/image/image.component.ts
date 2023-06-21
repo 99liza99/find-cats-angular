@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {CatImageInterface} from "../../interfaces/CatImageInterface";
 
 @Component({
   selector: 'app-image',
@@ -6,5 +7,5 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['./image.component.scss']
 })
 export class ImageComponent {
-  @Input() img: any;
+  @Input() image: CatImageInterface | undefined;
 }

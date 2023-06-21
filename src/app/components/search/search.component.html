@@ -2,14 +2,16 @@
   <h4>Basic mat-select</h4>
   <mat-form-field>
     <mat-label>Favorite food</mat-label>
-    <mat-select>
+    <mat-select name="currentBreed" ngDefaultControl [(ngModel)]="currentBreed" (ngModelChange)="onChange()">
       <mat-option *ngFor="let breed of breeds" [value]="breed.id">
         {{breed.name}}
       </mat-option>
     </mat-select>
   </mat-form-field>
   <h4>Slider</h4>
-  <mat-slider min="10" max="1000" step="10" showTickMarks discrete [displayWith]="formatLabel">
+  <mat-slider name="limit" ngDefaultControl (input)="onChange()" [(ngModel)]="limit" min="10" max="100" step="10"
+              showTickMarks discrete
+              [displayWith]="formatLabel">
     <input matSliderThumb>
   </mat-slider>
 </div>

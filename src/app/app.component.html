@@ -1,2 +1,2 @@
-<app-search></app-search>
-<app-gallery></app-gallery>
+<app-search (newOptionEvent)="changeFilter($event)"></app-search>
+<app-image *ngFor="let image of images" [image]="image"></app-image>

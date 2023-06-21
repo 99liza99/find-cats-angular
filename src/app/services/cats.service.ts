@@ -1,7 +1,10 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {BehaviorSubject, combineLatest, Observable, switchMap} from "rxjs";
 import {BreedInterface} from "../interfaces/BreedInterface";
+import {FilterInterface} from "../interfaces/FilterInterface";
+import {CatImageInterface} from "../interfaces/CatImageInterface";
+import {Consts} from "../consts";
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +17,15 @@ export class CatsService {
   constructor(private http: HttpClient) {
   }
 
+  filterValue = new BehaviorSubject<FilterInterface>(Consts);
+  filterValue$ = this.filterValue.asObservable();
+
+  images$: Observable<CatImageInterface[]> = combineLatest([
+    this.filterValue$,
+  ]).pipe(
+    switchMap(([filter]) => this.getCatsImages(filter)),
+  );
+
   /**
    * Get Breeds
    */
@@ -25,6 +37,21 @@ export class CatsService {
     }
 
     return this.http.get<BreedInterface[]>(this.apiUrl + 'breeds', {params});
+  }
+
+  /**
+   * Get Cats Images
+   *
+   * @param filter
+   */
+  getCatsImages(filter: FilterInterface): Observable<CatImageInterface[]> {
+    let params = {
+      limit: filter.limit,
+      breed_ids: filter.breed_ids,
+      api_key: this.apiKey
+    }
+
+    return this.http.get<CatImageInterface[]>(this.apiUrl + 'images/search', {params});
   }
 
 }
