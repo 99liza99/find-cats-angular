@@ -3,7 +3,7 @@
     "source": "functions"
   },
   "hosting": {
-    "public": "y",
+    "public": "public",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -15,5 +15,9 @@
         "destination": "/index.html"
       }
     ]
-  }
+  },
+  "remoteconfig": {
+    "template": "remote.config.json"
+  },
+  "extensions": {}
 }
